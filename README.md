@@ -10,9 +10,6 @@ Changes the bump mine so that it can only be triggered by the original player an
 - Sourcemod and Metamod
 - DHooks with detour support
 
-
 ## Installation ##
 1. Grab the latest release from the release page and unzip it in your sourcemod folder.
 2. Restart the server or type `sm plugins load bmself` in the console to load the plugin.
-
-## Usage ##
