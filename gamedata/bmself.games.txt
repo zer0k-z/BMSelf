@@ -1,0 +1,117 @@
+"Games"
+{
+	"csgo"
+	{
+		"Addresses"
+		{
+			"BumpMineThink"
+			{
+				"windows"
+				{
+					"signature" "BumpMineThinkSig"
+				}
+				"linux"
+				{
+					"signature" "BumpMineThinkSig"
+				}
+			}
+			"CGameMovement::Duck_Start"
+			{
+				"windows"
+				{
+					"signature" "CGameMovement::Duck"
+				}
+				"linux"
+				{
+					"signature" "CGameMovement::Duck"
+				}
+			}
+			
+		}
+		"Functions"
+		{
+			"CBumpMineProjectile::Detonate"
+			{
+				"signature"		"CBumpMineProjectile::Detonate"
+				"callconv"		"thiscall"
+				"return"		"void"
+				"this"			"entity"
+			}
+			"CBaseEntity::ApplyAbsVelocityImpulse"
+			{
+				"signature"		"CBaseEntity::ApplyAbsVelocityImpulse"
+				"callconv"		"thiscall"
+				"return"		"void"
+				"this"			"entity"
+				"arguments"
+				{
+					"inVecImpulse"
+					{
+						"type"	"vectorptr"
+					}
+				}
+			}
+		}
+		"Signatures"
+		{
+			"CBumpMineProjectile::Detonate"
+			{
+				"library"	"server"
+				"windows"	"\x55\x8B\xEC\x83\xE4\xF8\x81\xEC\x78\x01\x00\x00\x56\x57\x8B\xF9\x8B\x87\xD4\x00\x00\x00"
+				"linux"		"\x55\x89\xE5\x57\x56\x53\x81\xEC\xEC\x01\x00\x00\x8B\x5D\x08\xF6\x83\xDD\x00\x00\x00\x08\x0F\x85"
+			}
+			"CBaseEntity::ApplyAbsVelocityImpulse"
+			{
+				"library"	"server"
+				"windows"	"\x55\x8B\xEC\x83\xE4\xF8\xB8\x20\x10\x00\x00"
+				"linux"		"\x55\x89\xE5\x81\xEC\x58\x10\x00\x00"
+			}
+			"BumpMineThinkSig"
+			{
+				"library"	"server"
+				"windows"	"\x55\x8B\xEC\x83\xE4\xF0\x81\xEC\xB8\x08\x00\x00"
+				"linux"		"\x55\x89\xE5\x57\x56\x53\x81\xEC\x4C\x09\x00\x00\xA1"
+			}
+			"CGameMovement::Duck"
+			{
+				"library"	"server"
+				"windows"	"\x55\x8B\xEC\x83\xE4\xF8\x83\xEC\x78\x56\x57\x8B\xF9\x8B\x47\x08"
+				"linux"		"\x55\x89\xE5\x57\x56\x53\x81\xEC\x9C\x00\x00\x00\x8B\x5D\x08\x8B\x43\x08"
+			}
+		}
+		"Offsets"
+		{
+			"CBaseEntity::WorldSpaceCenter"
+			{
+				"library"	"server"
+				"windows"	"152"
+				"linux"		"153"
+			}
+			"BumpMineActivated"
+			{
+				"library"	"server"
+				"windows"	"1384"
+				"linux"		"1408"
+			}
+			"BumpMineDetonating"
+			{
+				"library"	"server"
+				"windows"	"1308"
+				"linux"		"1332"
+			}
+			"BumpMineSphereQueryOffset"
+			{
+				"library"	"server"
+				"windows"	"1417"
+				"linux"		"684"
+			}
+			"BumpMineTraceRayOffset"
+			{
+				"library"	"server"
+				"windows"	"1900"
+				"linux"		"1913"
+			}
+			
+		}		
+	}
+}
