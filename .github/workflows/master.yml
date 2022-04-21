@@ -43,8 +43,10 @@ jobs:
 
       - name: Zip output
         run: |
-          cd plugins
-          zip -qq -r bmself-${{ steps.setup_sp.outputs.plugin-version }}.zip bmself.smx
+          mkdir -p addons/sourcemod
+          cp -r gamedata addons/sourcemod/
+          cp -r plugins addons/sourcemod/
+          zip -qq -r bmself-${{ steps.setup_sp.outputs.plugin-version }}.zip addons
         working-directory: ${{ env.SCRIPTS_PATH }}
 
       - name: Create Release
