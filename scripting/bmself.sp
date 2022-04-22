@@ -202,7 +202,6 @@ bool IsPlayerInRange(int client, int bumpmine)
 	{
 		if (FloatAbs(distVec[i] - minePos[i]) > BM_BBOX_CHECK_DIST)
 		{
-			PrintToServer("%f - %f = %f", distVec[i], minePos[i], FloatAbs(distVec[i] - minePos[i]));
 			return false;
 		}
 	}

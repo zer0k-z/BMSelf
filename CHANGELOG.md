@@ -1,5 +1,10 @@
 ## Release Notes
 
+## [1.1.1]
+
+### Fixed
+- Removed debug messages.
+
 ## [1.1.0]
 
 ### Fixed
