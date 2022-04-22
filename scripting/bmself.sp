@@ -11,7 +11,7 @@ public Plugin myinfo =
 	name = "BMSelf",
 	author = "zer0.k",
 	description = "Prevent bump mine from affecting non owners",
-	version = "1.0.0",
+	version = "1.1.0",
 	url = "https://github.com/zer0k-z/BMSelf"
 };
 
@@ -32,6 +32,7 @@ int gI_SpherePatchRestore;
 Address gA_BumpMineTraceRayAddress;
 int gI_TraceRayPatchRestore;
 
+#define BM_BBOX_CHECK_DIST 81.0
 #define ASM_PATCH_LEN 17
 #include "glib/memutils"
 
@@ -195,12 +196,18 @@ bool IsPlayerInRange(int client, int bumpmine)
 	SDKCall(gH_WorldSpaceCenter_SDKCall, bumpmine, minePos);
 	CalcNearestPoint(client, minePos, distVec);
 
-	// The sphere query radius is 80 but seems to be 82.0 in reality.
-	if (GetVectorDistance(distVec, minePos) > 82.0)
+	// First check
+	// The player bbox must be within a 162x162x162 cube inside the bump mine's bbox.
+	for (int i = 0; i < 3; i++)
 	{
-		return false;
+		if (FloatAbs(distVec[i] - minePos[i]) > BM_BBOX_CHECK_DIST)
+		{
+			PrintToServer("%f - %f = %f", distVec[i], minePos[i], FloatAbs(distVec[i] - minePos[i]));
+			return false;
+		}
 	}
 
+	// Second check
 	// This is apparently some sort of ellipsoid that depends on the player's and bump mine's bbox center.
 	float ang[3], up[3];
 	GetEntPropVector(bumpmine, Prop_Send, "m_angRotation", ang);
