@@ -29,7 +29,6 @@ void OnEntityCreated_Detection(int entity, const char[] classname)
 public void OnBumpMineThink(int bumpmine)
 {
 	static float time = 0.0;
-	PrintToServer("%f", GetGameTime() - time);
 	time = GetGameTime();
 	// If the thrower is not nearby, disable its sphere query
 	// ...unless it's still activating or it's already detonating.
