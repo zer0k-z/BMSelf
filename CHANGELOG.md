@@ -1,5 +1,14 @@
 ## Release Notes
 
+## [1.2.0]
+
+### Changed
+- Updated plugin structure. Bump mines detection and detonation logic is now found in different files.
+
+### Added
+- Bump mines no longer give other players (apart from owner) smoke trail and shake effect upon detonation.
+- Doubled bumpmine check speed.
+
 ## [1.1.1]
 
 ### Fixed

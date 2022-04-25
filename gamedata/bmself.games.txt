@@ -6,27 +6,16 @@
 		{
 			"BumpMineThink"
 			{
-				"windows"
-				{
-					"signature" "BumpMineThinkSig"
-				}
-				"linux"
-				{
-					"signature" "BumpMineThinkSig"
-				}
+				"signature" "BumpMineThinkSig"
 			}
 			"CGameMovement::Duck_Start"
 			{
-				"windows"
-				{
-					"signature" "CGameMovement::Duck"
-				}
-				"linux"
-				{
-					"signature" "CGameMovement::Duck"
-				}
+				"signature" "CGameMovement::Duck"
 			}
-			
+			"ThinkFast"
+			{
+				"signature"		"ThinkFast"
+			}
 		}
 		"Functions"
 		{
@@ -36,6 +25,9 @@
 				"callconv"		"thiscall"
 				"return"		"void"
 				"this"			"entity"
+				"arguments"
+				{
+				}
 			}
 			"CBaseEntity::ApplyAbsVelocityImpulse"
 			{
@@ -72,6 +64,12 @@
 				"windows"	"\x55\x8B\xEC\x83\xE4\xF0\x81\xEC\xB8\x08\x00\x00"
 				"linux"		"\x55\x89\xE5\x57\x56\x53\x81\xEC\x4C\x09\x00\x00\xA1"
 			}
+			"ThinkFast"
+			{
+				"library"	"server"
+				"windows"	"\x55\x8B\xEC\x83\xE4\xF8\x81\xEC\x68\x01\x00\x00\x56\x57"
+				"linux"		"\x55\x89\xE5\x57\x56\x53\x81\xEC\xDC\x01\x00\x00\x8B\x5D\x08\x80\xBB\x61\x0A\x00\x00\x00"
+			}
 			"CGameMovement::Duck"
 			{
 				"library"	"server"
@@ -83,35 +81,39 @@
 		{
 			"CBaseEntity::WorldSpaceCenter"
 			{
-				"library"	"server"
 				"windows"	"152"
 				"linux"		"153"
 			}
 			"BumpMineActivated"
 			{
-				"library"	"server"
 				"windows"	"1384"
 				"linux"		"1408"
 			}
 			"BumpMineDetonating"
 			{
-				"library"	"server"
 				"windows"	"1308"
 				"linux"		"1332"
 			}
 			"BumpMineSphereQueryOffset"
 			{
-				"library"	"server"
 				"windows"	"1417"
 				"linux"		"684"
 			}
 			"BumpMineTraceRayOffset"
 			{
-				"library"	"server"
 				"windows"	"1900"
 				"linux"		"1913"
 			}
-			
-		}		
+			"ThinkTimer"
+			{
+				"windows"	"31"
+				"linux"		"29"
+			}
+			"ThinkFastOffset"
+			{
+				"windows"	"485"
+				"linux"		"1651"
+			}
+		}
 	}
 }
