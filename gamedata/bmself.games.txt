@@ -114,6 +114,11 @@
 				"windows"	"485"
 				"linux"		"1651"
 			}
+			"LastBMAffectedTime"
+			{
+				"windows"	"5956"
+				"linux"		"5980"
+			}
 		}
 	}
 }

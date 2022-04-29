@@ -12,7 +12,7 @@ public Plugin myinfo =
 	name = "BMSelf",
 	author = "zer0.k",
 	description = "Prevent bump mine from affecting non owners",
-	version = "1.2.0",
+	version = "1.3.0",
 	url = "https://github.com/zer0k-z/BMSelf"
 };
 
@@ -38,6 +38,7 @@ int gI_BumpMineThinkFastAddress;
 
 // Detonation
 int gI_CurrentBMOwner = -1;
+int gI_LastBMAffectedTime[MAXPLAYERS + 1];
 Handle gH_DHooks_BumpMineDetonate, gH_DHooks_ApplyAbsVelocityImpulse;
 
 #define BM_BBOX_CHECK_DIST 81.0

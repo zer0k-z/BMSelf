@@ -1,5 +1,10 @@
 ## Release Notes
 
+## [1.3.0]
+
+### Added
+- Bump mines no longer trigger the 0.4s bump mine boost cooldown on other players.
+
 ## [1.2.0]
 
 ### Changed

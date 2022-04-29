@@ -45,6 +45,7 @@ public Action OnShakeTransmit(UserMsg msg_id, Protobuf pb, const int[] players, 
 {
 	if (gI_CurrentBMOwner != -1 && players[0] != gI_CurrentBMOwner)
 	{
+		gI_LastBMAffectedTime[players[0]] = GetEntData(players[0], gH_GameData.GetOffset("LastBMAffectedTime"));
 		return Plugin_Handled;
 	}
 	return Plugin_Continue;
@@ -55,6 +56,7 @@ public MRESReturn Detour_ApplyAbsVelocityImpulse(int client, Handle hReturn, Han
 {
 	if (gI_CurrentBMOwner != -1 && client != gI_CurrentBMOwner)
 	{
+		SetEntData(client, gH_GameData.GetOffset("LastBMAffectedTime"), gI_LastBMAffectedTime[client]);
 		return MRES_Supercede;
 	}
 	return MRES_Ignored;
