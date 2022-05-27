@@ -1,5 +1,10 @@
 ## Release Notes
 
+## [1.3.1]
+
+### Fixed
+- Fix crashes.
+
 ## [1.3.0]
 
 ### Added

@@ -12,7 +12,7 @@ public Plugin myinfo =
 	name = "BMSelf",
 	author = "zer0.k",
 	description = "Prevent bump mine from affecting non owners",
-	version = "1.3.0",
+	version = "1.3.1",
 	url = "https://github.com/zer0k-z/BMSelf"
 };
 
@@ -29,9 +29,11 @@ bool gB_BumpMineSphereQueryDisabled;
 Address gA_BumpMineSphereAddress;
 int gI_SpherePatchRestore;
 
+bool gB_BumpMineTraceRayDisabled;
 Address gA_BumpMineTraceRayAddress;
 int gI_TraceRayPatchRestore;
 
+bool gB_BumpMineThinkSpeedChanged;
 Address gA_BumpMineThinkAddress;
 int gI_BumpMineThinkSlowAddress;
 int gI_BumpMineThinkFastAddress;

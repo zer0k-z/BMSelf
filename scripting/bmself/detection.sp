@@ -113,14 +113,13 @@ void DisableBumpMineSphereQuery()
 		gI_SpherePatchRestore = LoadFromAddress(gA_BumpMineSphereAddress, NumberType_Int32);
 		if (firstRun)
 		{
-			StoreToAddress(gA_BumpMineTraceRayAddress, 0xE990 + (gI_TraceRayPatchRestore >>> 16 << 16), NumberType_Int32);
+			StoreToAddress(gA_BumpMineSphereAddress, 0xE990 + (gI_SpherePatchRestore >>> 16 << 16), NumberType_Int32);
 		}
 		else
 		{
-			StoreToAddressCustom(gA_BumpMineTraceRayAddress, 0xE990 + (gI_TraceRayPatchRestore >>> 16 << 16), NumberType_Int32);
-			firstRun = false;
+			StoreToAddressCustom(gA_BumpMineSphereAddress, 0xE990 + (gI_SpherePatchRestore >>> 16 << 16), NumberType_Int32);
 		}
-		StoreToAddressCustom(gA_BumpMineSphereAddress, 0xE990 + (gI_SpherePatchRestore >>> 16 << 16), NumberType_Int32);
+		firstRun = false;
 	}
 }
 
@@ -144,53 +143,68 @@ void RestoreBumpMineSphereQuery(bool slow = false)
 void DisableBumpMineTraceRay()
 {
 	static bool firstRun = true;
-	
-	gI_TraceRayPatchRestore = LoadFromAddress(gA_BumpMineTraceRayAddress, NumberType_Int32);
-	if (firstRun)
+	if (!gB_BumpMineTraceRayDisabled)
 	{
-		StoreToAddress(gA_BumpMineTraceRayAddress, 0xE990 + (gI_TraceRayPatchRestore >>> 16 << 16), NumberType_Int32);
-	}
-	else
-	{
-		StoreToAddressCustom(gA_BumpMineTraceRayAddress, 0xE990 + (gI_TraceRayPatchRestore >>> 16 << 16), NumberType_Int32);
+		gB_BumpMineTraceRayDisabled = true;
+		gI_TraceRayPatchRestore = LoadFromAddress(gA_BumpMineTraceRayAddress, NumberType_Int32);
+		if (firstRun)
+		{
+			StoreToAddress(gA_BumpMineTraceRayAddress, 0xE990 + (gI_TraceRayPatchRestore >>> 16 << 16), NumberType_Int32);
+		}
+		else
+		{
+			StoreToAddressCustom(gA_BumpMineTraceRayAddress, 0xE990 + (gI_TraceRayPatchRestore >>> 16 << 16), NumberType_Int32);
+		}
 		firstRun = false;
 	}
 }
 
 void RestoreBumpMineTraceRay(bool slow = false)
 {
-	if (slow)
+	if (gB_BumpMineTraceRayDisabled)
 	{
-		StoreToAddress(gA_BumpMineTraceRayAddress, gI_TraceRayPatchRestore, NumberType_Int32);
-	}
-	else
-	{
-		StoreToAddressCustom(gA_BumpMineTraceRayAddress, gI_TraceRayPatchRestore, NumberType_Int32);
+		if (slow)
+		{
+			StoreToAddress(gA_BumpMineTraceRayAddress, gI_TraceRayPatchRestore, NumberType_Int32);
+		}
+		else
+		{
+			StoreToAddressCustom(gA_BumpMineTraceRayAddress, gI_TraceRayPatchRestore, NumberType_Int32);
+		}
+		gB_BumpMineTraceRayDisabled = false;
 	}
 }
 
 void ReduceBumpMineThinkTime()
 {
 	static bool firstRun = true;
-	if (firstRun)
+	if (!gB_BumpMineThinkSpeedChanged)
 	{
-		StoreToAddress(gA_BumpMineThinkAddress, gI_BumpMineThinkFastAddress, NumberType_Int32);
-	}
-	else
-	{
-		StoreToAddressCustom(gA_BumpMineThinkAddress, gI_BumpMineThinkFastAddress, NumberType_Int32);
+		gB_BumpMineThinkSpeedChanged = true;
+		if (firstRun)
+		{
+			StoreToAddress(gA_BumpMineThinkAddress, gI_BumpMineThinkFastAddress, NumberType_Int32);
+		}
+		else
+		{
+			StoreToAddressCustom(gA_BumpMineThinkAddress, gI_BumpMineThinkFastAddress, NumberType_Int32);
+		}
 		firstRun = false;
 	}
 }
 
 void RestoreBumpMineThinkTime(bool slow = false)
 {
-	if (slow)
+	if (gB_BumpMineThinkSpeedChanged)
 	{
-		StoreToAddress(gA_BumpMineThinkAddress, gI_BumpMineThinkSlowAddress, NumberType_Int32);
-	}
-	else
-	{
-		StoreToAddressCustom(gA_BumpMineThinkAddress, gI_BumpMineThinkSlowAddress, NumberType_Int32);
+		if (slow)
+		{
+			StoreToAddress(gA_BumpMineThinkAddress, gI_BumpMineThinkSlowAddress, NumberType_Int32);
+		}
+		else
+		{
+			StoreToAddressCustom(gA_BumpMineThinkAddress, gI_BumpMineThinkSlowAddress, NumberType_Int32);
+		}
+		gB_BumpMineThinkSpeedChanged = false;
 	}
 }
